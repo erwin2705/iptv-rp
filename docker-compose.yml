@@ -1,0 +1,15 @@
+services:
+  iptv-restream-proxy:
+    build: .
+    container_name: iptv-restream-proxy
+    network_mode: "host"
+    init: true
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./app:/app
+      - iptv_data:/data
+    restart: unless-stopped
+
+volumes:
+  iptv_data:
